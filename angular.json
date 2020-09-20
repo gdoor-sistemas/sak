@@ -12,7 +12,7 @@
       },
       "root": "projects/sak",
       "sourceRoot": "projects/sak/src",
-      "prefix": "app",
+      "prefix": "sak",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -120,6 +120,46 @@
             "production": {
               "devServerTarget": "sak:serve:production"
             }
+          }
+        }
+      }
+    },
+    "helpers": {
+      "projectType": "library",
+      "root": "projects/helpers",
+      "sourceRoot": "projects/helpers/src",
+      "prefix": "gd",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/helpers/tsconfig.lib.json",
+            "project": "projects/helpers/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/helpers/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/helpers/src/test.ts",
+            "tsConfig": "projects/helpers/tsconfig.spec.json",
+            "karmaConfig": "projects/helpers/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/helpers/tsconfig.lib.json",
+              "projects/helpers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
