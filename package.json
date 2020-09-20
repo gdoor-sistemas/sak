@@ -2,13 +2,14 @@
   "name": "sak",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "node --max_old_space_size=2048 ./node_modules/@angular/cli/bin/ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "helpers:watch": "ng build helpers --watch"
+    "helpers:watch": "ng build helpers --watch",
+    "helpers:publish": "yarn ng -- build helpers prod && cd dist/helpers && npm publish --access public"
   },
   "private": true,
   "dependencies": {
