@@ -11,6 +11,8 @@ jobs:
     name: Build
     steps:
       - uses: actions/checkout@v2.3.2
+        with:
+          depth: 1
         
       - uses: actions/setup-node@v1.4.3
         with:
@@ -18,10 +20,12 @@ jobs:
           scope: '@gdoor'
           registry-url: https://registry.npmjs.org/
           
+      - run: npm i -g yarn
+          
       - name: Build
         run: |
-          npm ci
-          npm build helpers --prod
+          yarn install
+          ng build helpers --prod
           cd dist/helpers
         
       - run: npm publish --access public
