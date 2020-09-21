@@ -78,4 +78,29 @@ export class Format {
   public static cest(value: string): string {
     return this.padRight(Str.onlyNumbers(value), '0', 7).replace(/(\d{2})(\d{3})(\d{2})/, '$1.$2.$3');
   }
+
+  /**
+   * Formats a string as a brazilian known phone number
+   */
+  public static phone(value: string): string {
+    let clearValue = Str.onlyNumbers(value);
+    const exp8D = /(\d{2})(\d{4})(\d{4})/;
+    const exp9D = /(\d{2})(\d{5})(\d{4})/;
+    const exp0800 = /(\d{4})(\d{3})(\d{4})/;
+    const maskTel = '(0$1) $2-$3';
+    const mask0800 = '$1 $2 $3';
+
+    if (['0300', '0800'].includes(clearValue.substr(0, 4))) {
+      return clearValue.replace(exp0800, mask0800);
+    }
+
+    // removes leading zeros
+    clearValue = clearValue.replace(/^0+/, '');
+
+    if (clearValue.length > 10) {
+      return clearValue.replace(exp9D, maskTel);
+    }
+
+    return clearValue.replace(exp8D, maskTel);
+  }
 }

@@ -1,6 +1,6 @@
 import { Format } from './format.helper';
 
-describe('Format helper', () => {
+fdescribe('Format helper', () => {
   it('should pad string left', () => {
     expect(Format.padLeft('foo', '-', 5)).toEqual('--foo');
   });
@@ -40,5 +40,12 @@ describe('Format helper', () => {
     expect(Format.cest('123')).toEqual('12.300.00');
     expect(Format.cest('12345')).toEqual('12.345.00');
     expect(Format.cest('12345678')).toEqual('12.345.67');
+  });
+
+  it('should format phone numbers', () => {
+    expect(Format.phone('4934413100')).toBe('(049) 3441-3100');
+    expect(Format.phone('04934413100')).toBe('(049) 3441-3100');
+    expect(Format.phone('49934413100')).toBe('(049) 93441-3100');
+    expect(Format.phone('08000000000')).toBe('0800 000 0000');
   });
 });
