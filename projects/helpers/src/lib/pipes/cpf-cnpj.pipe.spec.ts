@@ -8,7 +8,7 @@ class TestHostComponent {
   value: string;
 }
 
-fdescribe('CpfCnpjPipe', () => {
+describe('CpfCnpjPipe', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 

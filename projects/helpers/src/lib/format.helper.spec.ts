@@ -1,6 +1,6 @@
 import { Format } from './format.helper';
 
-fdescribe('Format helper', () => {
+describe('Format helper', () => {
   it('should pad string left', () => {
     expect(Format.padLeft('foo', '-', 5)).toEqual('--foo');
   });
