@@ -1,9 +1,10 @@
 {
   "name": "@gdoor/helpers",
-  "version": "0.0.1-dev",
+  "version": "0.0.3-dev",
   "peerDependencies": {
-    "@angular/common": "^9.0.0",
-    "@angular/core": "^9.0.0"
+    "@angular/common": "^9",
+    "@angular/core": "^9",
+    "jsbarcode": "^3"
   },
   "dependencies": {
     "tslib": "^2.0.0"
