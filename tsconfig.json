@@ -19,6 +19,9 @@
       "@gdoor/helpers": [
         "dist/helpers/helpers",
         "dist/helpers"
+      ],
+      "@gdoor/helpers/pipes": [
+        "dist/helpers/pipes"
       ]
     }
   }
