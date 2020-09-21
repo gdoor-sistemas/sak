@@ -8,6 +8,9 @@ import { CpfCnpjPipe } from './cpf-cnpj.pipe';
   imports: [
     CommonModule,
   ],
+  exports: [
+    CpfCnpjPipe,
+  ],
 })
 export class PipesModule {
 }

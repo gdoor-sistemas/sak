@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { CpfCnpjPipe } from './cpf-cnpj.pipe';
-import { Format } from '@gdoor/helpers';
+import { Format } from '../format.helper';
 
 @Component({template: `{{value | cpfCnpj}}`})
 class TestHostComponent {
   value: string;
 }
 
-describe('CpfCnpjPipe', () => {
+fdescribe('CpfCnpjPipe', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
