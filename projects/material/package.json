@@ -3,7 +3,8 @@
   "version": "0.0.0-dev",
   "peerDependencies": {
     "@angular/common": "^9",
-    "@angular/core": "^9"
+    "@angular/core": "^9",
+    "@angular/material": "^9"
   },
   "dependencies": {
     "tslib": "^2.0.0"

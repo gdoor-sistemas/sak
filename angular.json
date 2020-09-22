@@ -168,7 +168,7 @@
       "projectType": "library",
       "root": "projects/material",
       "sourceRoot": "projects/material/src",
-      "prefix": "lib",
+      "prefix": "gd",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

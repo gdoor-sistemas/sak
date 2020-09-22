@@ -1,0 +1,16 @@
+<div role="group"
+     class="gd-date-time-control-wrapper"
+     [formGroup]="parts"
+     [attr.aria-labelledby]="formField?.getLabelId()">
+  <input formControlName="date"
+         maxLength="10"
+         aria-label="Data"
+         (input)="handleInput(parts.controls.date, time)"
+         #date>
+  <input formControlName="time"
+         maxLength="8"
+         aria-label="Hora"
+         (input)="handleInput(parts.controls.time)"
+         (keyup.backspace)="autoFocusPrev(parts.controls.time, date)"
+         #time>
+</div>
