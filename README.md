@@ -1,4 +1,4 @@
-![Publish @gdoor/helpers](https://github.com/gdoor-sistemas/sak/workflows/Publish%20@gdoor/helpers/badge.svg)
+![Publish @gdoor/helpers](https://github.com/gdoor-sistemas/sak/workflows/Publish%20@gdoor/helpers/badge.svg?branch=main)
 ![@gdoor/helpers NPM package](https://img.shields.io/npm/v/@gdoor/helpers?color=ee6906&label=%40gdoor%2Fhelpers&logo=npm)
 
 # Swiss Army Knife | GDOOR® Sistemas
