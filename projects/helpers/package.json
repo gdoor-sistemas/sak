@@ -1,6 +1,6 @@
 {
   "name": "@gdoor/helpers",
-  "version": "0.0.9-dev",
+  "version": "0.0.10-dev",
   "peerDependencies": {
     "@angular/common": "^9",
     "@angular/platform-browser": "^9",
