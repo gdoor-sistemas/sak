@@ -1,5 +1,6 @@
 {
   "name": "@gdoor/helpers",
+  "description": "A package with utilities for working with Angular",
   "version": "0.0.10",
   "peerDependencies": {
     "@angular/common": "^9",
@@ -8,5 +9,14 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "repository": "github:gdoor-sistemas/sak",
+  "homepage": "https://github.com/gdoor-sistemas/sak/tree/main/projects/helpers",
+  "license": "MIT",
+  "keywords": [
+    "gdoor",
+    "helpers",
+    "typescript",
+    "angular"
+  ]
 }
