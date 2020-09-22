@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 import { CpfCnpjPipe } from './cpf-cnpj.pipe';
@@ -32,7 +31,6 @@ const pipes = [
   declarations: pipes,
   exports: pipes,
   imports: [
-    BrowserModule,
     CommonModule,
   ],
   providers: [
