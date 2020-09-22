@@ -1,30 +1,31 @@
 name: Publish packages
 
 on:
-  push: 
+  push:
     branches: [ main ]
     paths: 'projects/helpers/*'
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Build
     steps:
       - uses: actions/checkout@v2.3.2
-        
+
       - uses: actions/setup-node@v1.4.3
         with:
           node-version: 12
           scope: '@gdoor'
           registry-url: https://registry.npmjs.org/
-          
+
       - run: npm i -g yarn
-      
+
       - name: Build
         run: |
           yarn install
+          npm version patch --no-git-tag-version
           yarn ng build helpers --prod
-        
+
       - name: Publish
         run: |
           cd dist/helpers
