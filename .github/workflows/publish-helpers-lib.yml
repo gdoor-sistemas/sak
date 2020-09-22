@@ -1,4 +1,4 @@
-name: Publish packages
+name: Publish @gdoor/helpers
 
 on:
   push:
@@ -23,7 +23,9 @@ jobs:
       - name: Build
         run: |
           yarn install
+          cd projects/helpers
           npm version patch --no-git-tag-version
+          cd ../..
           yarn ng build helpers --prod
 
       - name: Publish
