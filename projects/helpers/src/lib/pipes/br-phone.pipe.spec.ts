@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { PhonePipe } from './phone.pipe';
+import { BrPhonePipe } from './br-phone.pipe';
 import { Format } from '../format.helper';
 
-@Component({template: `{{value | phone}}`})
+@Component({template: `<span [innerHTML]="value | brPhone:link"></span>`})
 class TestHostComponent {
-  value: string;
+  public value: string;
+  public link = false;
 }
 
 describe('PhonePipe', () => {
@@ -16,7 +17,7 @@ describe('PhonePipe', () => {
     await TestBed.configureTestingModule({
       declarations: [
         TestHostComponent,
-        PhonePipe,
+        BrPhonePipe,
       ],
     }).compileComponents();
 
@@ -28,9 +29,17 @@ describe('PhonePipe', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render piped value', () => {
-    component.value = '(0xx49) 3441 - 3100)';
+  it('should render piped value without link', () => {
+    component.value = '(0xx49) 3441 - 3100';
     fixture.detectChanges();
     expect(fixture.nativeElement.innerText.trim()).toBe(Format.phone(component.value));
+    expect(fixture.nativeElement.querySelector('a.link')).toBeFalsy();
+  });
+
+  it('should render piped value with link', () => {
+    component.value = '(0xx49) 3441 - 3100';
+    component.link = true;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('a.link')).toBeTruthy();
   });
 });

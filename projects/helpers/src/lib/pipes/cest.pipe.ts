@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { Format } from '../format.helper';
 
-@Pipe({name: 'cpfCnpj'})
-export class CpfCnpjPipe implements PipeTransform {
+@Pipe({name: 'cest'})
+export class CestPipe implements PipeTransform {
   public transform(value: string): string {
-    return value && Format.cpfCnpj(value);
+    return value && Format.cest(value);
   }
 }

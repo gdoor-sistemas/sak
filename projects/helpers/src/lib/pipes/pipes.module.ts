@@ -1,21 +1,43 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 import { CpfCnpjPipe } from './cpf-cnpj.pipe';
-import { PhonePipe } from './phone.pipe';
+import { BrPhonePipe } from './br-phone.pipe';
 import { Nl2BrPipe } from './nl2br.pipe';
+import { NcmPipe } from './ncm.pipe';
+import { CestPipe } from './cest.pipe';
+import { AbsPipe } from './abs.pipe';
+import { ActiveInactivePipe } from './active-inactive.pipe';
+import { GD_ACTIVE_INACTIVE_INTL_PROVIDER } from './active-inactive-intl.service';
+import { CharPipe } from './char.pipe';
+import { BrlPipe } from './brl.pipe';
+import { YesNoPipe } from './yes-no.pipe';
+import { GD_YES_NO_INTL_PROVIDER } from './yes-no-intl.service';
 
 const pipes = [
   CpfCnpjPipe,
-  PhonePipe,
+  BrPhonePipe,
   Nl2BrPipe,
+  NcmPipe,
+  CestPipe,
+  AbsPipe,
+  ActiveInactivePipe,
+  CharPipe,
+  BrlPipe,
+  YesNoPipe,
 ];
 
 @NgModule({
   declarations: pipes,
   exports: pipes,
   imports: [
+    BrowserModule,
     CommonModule,
+  ],
+  providers: [
+    GD_ACTIVE_INACTIVE_INTL_PROVIDER,
+    GD_YES_NO_INTL_PROVIDER,
   ],
 })
 export class PipesModule {

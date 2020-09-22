@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { Nl2BrPipe } from './nl2br.pipe';
+import { NcmPipe } from './ncm.pipe';
+import { Format } from '../format.helper';
 
-@Component({template: `<span [innerHTML]="value | nl2br"></span>`})
+@Component({template: `{{value | ncm}}`})
 class TestHostComponent {
   public value: string;
 }
 
-describe('Nl2BrPipe', () => {
+describe('NcmPipe', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
@@ -15,7 +16,7 @@ describe('Nl2BrPipe', () => {
     await TestBed.configureTestingModule({
       declarations: [
         TestHostComponent,
-        Nl2BrPipe,
+        NcmPipe,
       ],
     }).compileComponents();
 
@@ -27,9 +28,15 @@ describe('Nl2BrPipe', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render piped value', () => {
-    component.value = 'foo\nbar';
+  it('should not break with invalid value', () => {
+    component.value = undefined;
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerHTML).toContain('foo<br');
+    expect(fixture.nativeElement.innerText.trim()).toBe('');
+  });
+
+  it('should render piped value', () => {
+    component.value = '12345678';
+    fixture.detectChanges();
+    expect(fixture.nativeElement.innerText.trim()).toBe(Format.ncm(component.value));
   });
 });

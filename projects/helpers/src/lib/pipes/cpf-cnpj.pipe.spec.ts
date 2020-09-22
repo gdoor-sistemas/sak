@@ -5,7 +5,7 @@ import { Format } from '../format.helper';
 
 @Component({template: `{{value | cpfCnpj}}`})
 class TestHostComponent {
-  value: string;
+  public value: string;
 }
 
 describe('CpfCnpjPipe', () => {

@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { Nl2BrPipe } from './nl2br.pipe';
+import { AbsPipe } from './abs.pipe';
 
-@Component({template: `<span [innerHTML]="value | nl2br"></span>`})
+@Component({template: `{{value | abs}}`})
 class TestHostComponent {
-  public value: string;
+  public value: any;
 }
 
-describe('Nl2BrPipe', () => {
+describe('AbsPipe', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
@@ -15,7 +15,7 @@ describe('Nl2BrPipe', () => {
     await TestBed.configureTestingModule({
       declarations: [
         TestHostComponent,
-        Nl2BrPipe,
+        AbsPipe,
       ],
     }).compileComponents();
 
@@ -27,9 +27,15 @@ describe('Nl2BrPipe', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render piped value', () => {
-    component.value = 'foo\nbar';
+  it('should not break with invalid value', () => {
+    component.value = 'some value';
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerHTML).toContain('foo<br');
+    expect(fixture.nativeElement.innerText.trim()).toBe('0');
+  });
+
+  it('should render piped value', () => {
+    component.value = -5.6;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.innerText.trim()).toBe('5.6');
   });
 });
