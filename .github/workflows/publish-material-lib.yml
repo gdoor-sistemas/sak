@@ -2,7 +2,7 @@ name: Publish @gdoor/material
 on:
   push:
     branches: [ main ]
-    paths: 'projects/material/*'
+    paths: 'projects/material/**/*'
 
 jobs:
   build:

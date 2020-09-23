@@ -3,7 +3,7 @@ name: Publish sak's GitHub pages
 on:
   push:
     branches: [ main ]
-    paths: 'projects/sak/*'
+    paths: 'projects/sak/**/*'
 
 jobs:
   build:

@@ -3,7 +3,7 @@ name: Publish @gdoor/helpers
 on:
   push:
     branches: [ main ]
-    paths: 'projects/helpers/*'
+    paths: 'projects/helpers/**/*'
 
 jobs:
   build:

@@ -1115,6 +1115,20 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@gdoor/helpers@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@gdoor/helpers/-/helpers-0.0.11.tgz#2a7c1ef8cbff5840bae29e06b3506cd0af50c594"
+  integrity sha512-0YPY2RanhEtS1lXs17cHz1PoBG/yRVkxUBrvI9AQyDvmla4FMZ/pkbCpA7LLlBTnFVhqi/9crQItiKByHGoxDQ==
+  dependencies:
+    tslib "^2.0.0"
+
+"@gdoor/material@^0.0.0-dev":
+  version "0.0.0-dev"
+  resolved "https://registry.yarnpkg.com/@gdoor/material/-/material-0.0.0-dev.tgz#b37073ddda1d7b9d369a79ed0c6b03cee621bac8"
+  integrity sha512-1AowKexRh9MXGODz2LXDbtTh7DHvDAOTXlrjZN/LkfvpwoSyIGqgRH+l8ka0eUQuJB8ahhNfE7VMXyppZQmdPw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
