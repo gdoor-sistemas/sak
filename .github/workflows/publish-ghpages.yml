@@ -1,4 +1,4 @@
-name: Publish sak's GitHub pages
+name: Publish sak's GitHub Pages
 
 on:
   push:
@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: 12
 
-      - name: Build
+      - run: yarn install
+
+      - name: Build and deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          yarn install
-          npm run ng deploy
+        run: npm run ng deploy
