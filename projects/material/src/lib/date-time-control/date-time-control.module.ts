@@ -9,7 +9,6 @@ import { DateTimeControlComponent } from './date-time-control.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DateTimeControlModule,
   ],
   exports: [DateTimeControlComponent],
 })
