@@ -21,4 +21,4 @@ jobs:
       - name: Build and deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run ng deploy
+        run: npm run ng deploy --no-silent
