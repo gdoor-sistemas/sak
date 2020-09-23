@@ -18,7 +18,7 @@ jobs:
 
       - name: Build
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           yarn install
           npm run ng deploy
