@@ -2,12 +2,17 @@
      class="gd-date-time-control-wrapper"
      [formGroup]="parts"
      [attr.aria-labelledby]="formField?.getLabelId()">
-  <input formControlName="date"
+  <input type="tel"
+         formControlName="date"
          maxLength="10"
          aria-label="Data"
          (input)="handleInput(parts.controls.date, time)"
+         [matDatepicker]="picker"
          #date>
-  <input formControlName="time"
+  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <input type="time"
+         formControlName="time"
          maxLength="8"
          aria-label="Hora"
          (input)="handleInput(parts.controls.time)"

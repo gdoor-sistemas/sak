@@ -1,4 +1,16 @@
-import { Component, ElementRef, Inject, Input, OnChanges, OnDestroy, Optional, Self, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  LOCALE_ID,
+  OnChanges,
+  OnDestroy,
+  Optional,
+  Self,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MAT_FORM_FIELD, MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 import { AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -33,8 +45,8 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     let time = null;
 
     if (value instanceof Date) {
-      date = formatDate(value, 'YYYY-MM-DD', '');
-      time = formatDate(value, 'HH:mm:ss', '');
+      date = formatDate(value, 'yyyy-MM-dd', this.locale);
+      time = formatDate(value, 'HH:mm:ss', this.locale);
     }
 
     this.parts.setValue({date, time});
@@ -88,13 +100,14 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
               private _focusMonitor: FocusMonitor,
               private _elementRef: ElementRef<HTMLElement>,
               @Optional() @Inject(MAT_FORM_FIELD) public formField: MatFormField,
-              @Optional() @Self() public ngControl: NgControl) {
+              @Optional() @Self() public ngControl: NgControl,
+              @Inject(LOCALE_ID) public readonly locale: string) {
     this.parts = formBuilder.group({
       date: [null, [Validators.required]],
       time: [null, [Validators.required]],
     });
 
-    this._focusMonitor.monitor(_elementRef, true).subscribe(origin => {
+    this._focusMonitor.monitor(this._elementRef, true).subscribe(origin => {
       if (this.focused && !origin) {
         this.onTouched();
       }
@@ -107,6 +120,12 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     }
   }
 
+  public setDescribedByIds(ids: string[]): void {
+    const controlElement = this._elementRef.nativeElement.querySelector('.gd-date-time-control-wrapper');
+    controlElement.setAttribute('aria-describedby', ids.join(' '));
+  }
+
+  //region Lifecycle events
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.placeholder) {
       this.stateChanges.next();
@@ -128,7 +147,9 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     this.stateChanges.complete();
     this._focusMonitor.stopMonitoring(this._elementRef);
   }
+  //endregion
 
+  //region Behaviour controls
   public autoFocusNext(control: AbstractControl, nextElement?: HTMLInputElement): void {
     if (!control.errors && nextElement) {
       this._focusMonitor.focusVia(nextElement, 'program');
@@ -153,15 +174,11 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     }
   }
 
-  public setDescribedByIds(ids: string[]): void {
-    const controlElement = this._elementRef.nativeElement.querySelector('.gd-date-time-control-wrapper');
-    controlElement.setAttribute('aria-describedby', ids.join(' '));
-  }
-
   public handleInput(control: AbstractControl, next?: HTMLInputElement): void {
     this.autoFocusNext(control, next);
     this.onChange(this.value);
   }
+  //endregion
 
   // region ControlValueAccessor implementations
   public writeValue(tel: Date | null): void {
