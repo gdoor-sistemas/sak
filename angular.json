@@ -28,6 +28,7 @@
               "projects/sak/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "projects/sak/src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "projects/sak/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "projects/sak/src/styles.scss"
             ],
             "scripts": []
@@ -203,7 +205,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": "d9bdc0e9-db55-4028-b8fe-96cfba6d2101"
   },

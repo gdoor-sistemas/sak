@@ -1,3 +1,21 @@
-<mat-form-field>
-  <gd-date-time-control placeholder="Teste"></gd-date-time-control>
-</mat-form-field>
+<mat-toolbar>
+  <button type="button" mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Swiss Army Knife</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #drawer
+               mode="side"
+               [opened]="true">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/helpers">Helpers</a>
+      <a mat-list-item routerLink="/material">Material</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
