@@ -35,7 +35,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add projects/helpers/package.json
-          git commit -m "${{ steps.build.outputs.version }}"
+          git commit -m "${{ github.repository }}@${{ steps.build.outputs.version }}"
           git push $REMOTE
 
       - name: Publish to npmjs
