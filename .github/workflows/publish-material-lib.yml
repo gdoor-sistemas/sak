@@ -20,9 +20,10 @@ jobs:
       - run: npm i -g yarn
 
       - name: Build
+        id: build
         run: |
           yarn install
-          version=$(npm version patch --no-git-tag-version)
+          echo "##[set-output name=version;]$(npm version patch --no-git-tag-version)"
           yarn ng build material --prod
 
      - name: Pushes new version
@@ -31,7 +32,7 @@ jobs:
          git config user.name "${{ github.actor }}"
          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
          git add projects/helpers/package.json
-         git commit -m "$version"
+         git commit -m "${{ steps.build.outputs.version }}"
          git push $REMOTE
 
       - name: Publish to npmjs
