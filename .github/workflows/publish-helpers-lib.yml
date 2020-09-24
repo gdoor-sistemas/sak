@@ -24,11 +24,20 @@ jobs:
         run: |
           yarn install
           cd projects/helpers
-          npm version patch --no-git-tag-version
+          version=$(npm version patch --no-git-tag-version)
           cd ../..
           yarn ng build helpers --prod
 
-      - name: Publish
+      - name: Pushes new version
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add projects/helpers/package.json
+          git commit -m "$version"
+          git push $REMOTE
+
+      - name: Publish to npmjs
         run: |
           cd dist/helpers
           npm publish --access public

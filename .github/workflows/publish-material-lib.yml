@@ -22,10 +22,19 @@ jobs:
       - name: Build
         run: |
           yarn install
-          npm version patch --no-git-tag-version
+          version=$(npm version patch --no-git-tag-version)
           yarn ng build material --prod
 
-      - name: Publish
+     - name: Pushes new version
+       run: |
+         git config user.email "${{ github.actor }}@users.noreply.github.com"
+         git config user.name "${{ github.actor }}"
+         REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+         git add projects/helpers/package.json
+         git commit -m "$version"
+         git push $REMOTE
+
+      - name: Publish to npmjs
         run: |
           cd dist/material
           npm publish --access public
