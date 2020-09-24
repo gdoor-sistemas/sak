@@ -84,11 +84,14 @@ export class Format {
    */
   public static phone(value: string): string {
     let clearValue = Str.onlyNumbers(value);
-    const exp8D = /(\d{2})(\d{4})(\d{4})/;
-    const exp9D = /(\d{2})(\d{5})(\d{4})/;
     const exp0800 = /(\d{4})(\d{3})(\d{4})/;
-    const maskTel = '(0$1) $2-$3';
     const mask0800 = '$1 $2 $3';
+
+    const expTel = /(\d{2})(\d{4,5})(\d{4})/;
+    const maskTel = '(0$1) $2-$3';
+
+    const expNoArea = /(\d{4,5})(\d{4})/;
+    const maskTelNoArea = '$1-$2';
 
     if (['0300', '0800'].includes(clearValue.substr(0, 4))) {
       return clearValue.replace(exp0800, mask0800);
@@ -97,10 +100,10 @@ export class Format {
     // removes leading zeros
     clearValue = clearValue.replace(/^0+/, '');
 
-    if (clearValue.length > 10) {
-      return clearValue.replace(exp9D, maskTel);
+    if (clearValue.length < 10) {
+      return clearValue.replace(expNoArea, maskTelNoArea);
     }
 
-    return clearValue.replace(exp8D, maskTel);
+    return clearValue.replace(expTel, maskTel);
   }
 }

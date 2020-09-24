@@ -42,10 +42,12 @@ describe('Format helper', () => {
     expect(Format.cest('12345678')).toEqual('12.345.67');
   });
 
-  it('should format phone numbers', () => {
+  it('should format phone numbers with different input patterns', () => {
     expect(Format.phone('4934413100')).toBe('(049) 3441-3100');
     expect(Format.phone('04934413100')).toBe('(049) 3441-3100');
     expect(Format.phone('49934413100')).toBe('(049) 93441-3100');
     expect(Format.phone('08000000000')).toBe('0800 000 0000');
+    expect(Format.phone('999999999')).toBe('99999-9999');
+    expect(Format.phone('33333333')).toBe('3333-3333');
   });
 });
