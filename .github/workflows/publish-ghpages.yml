@@ -3,7 +3,7 @@ name: Publish sak's GitHub Pages
 on:
   push:
     branches: [ main ]
-    paths: 'projects/sak/**/*'
+    paths: [ 'projects/sak/**/*', '.github/workflows/publish-ghpages.yml' ]
 
 jobs:
   build:
@@ -16,9 +16,19 @@ jobs:
         with:
           node-version: 12
 
-      - run: yarn install
-
-      - name: Build and deploy to GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run ng deploy --no-silent
+      - name: Build site
+        id: build
+        run: |
+          yarn install
+          echo "##[set-output name=version;]$(npm version patch --no-git-tag-version)"
+          yarn ng build --prod --output-path=docs
+          cp docs/index.html docs/404.html
+          
+      - name: Publish docs to repo
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add docs/*
+          git commit -m "docs: updates github page (${{ steps.build.outputs.version }})"
+          git push $REMOTE
