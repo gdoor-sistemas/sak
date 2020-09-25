@@ -17,11 +17,11 @@
     ],
     "paths": {
       "@gdoor/helpers": [
-        "dist/helpers/helpers",
+        "dist/helpers/gdoor-helpers",
         "dist/helpers"
       ],
       "@gdoor/material": [
-        "dist/material/material",
+        "dist/material/gdoor-material",
         "dist/material"
       ]
     }

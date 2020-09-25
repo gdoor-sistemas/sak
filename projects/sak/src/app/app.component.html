@@ -2,7 +2,13 @@
   <button type="button" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Swiss Army Knife | GDOOR®</span>
+
+  <span class="flex">Swiss Army Knife | GDOOR®</span>
+
+  <a type="button" mat-button href="https://github.com/gdoor-sistemas/sak" target="_blank">
+    <img src="/assets/img/github-circle-white-transparent.svg" alt="Logo do GitHub">
+    GitHub
+  </a>
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -13,6 +19,8 @@
       <a mat-list-item routerLink="/helpers">Helpers</a>
       <a mat-list-item routerLink="/material">Material</a>
     </mat-nav-list>
+
+    <span class="version">{{version}}</span>
   </mat-sidenav>
 
   <mat-sidenav-content>
