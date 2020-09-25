@@ -36,6 +36,7 @@ jobs:
           REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/gdoor-sistemas/sak
           git add projects/helpers/package.json
           git commit -m "@gdoor/helpers@${{ steps.build.outputs.version }}"
+          git pull $REMOTE
           git push $REMOTE
 
       - name: Publish to npmjs
