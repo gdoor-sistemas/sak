@@ -33,9 +33,9 @@ jobs:
         run: |
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
-          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/gdoor-sistemas/sak
           git add projects/material/package.json
-          git commit -m "${{ github.repository }}@${{ steps.build.outputs.version }}"
+          git commit -m "@gdoor/material@${{ steps.build.outputs.version }}"
           git push $REMOTE
 
       - name: Publish to npmjs
