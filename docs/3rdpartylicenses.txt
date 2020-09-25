@@ -66,9 +66,6 @@ MIT
 @angular/router
 MIT
 
-@gdoor/helpers
-MIT
-
 @gdoor/material
 
 css-loader
