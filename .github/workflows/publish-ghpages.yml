@@ -32,4 +32,5 @@ jobs:
           git add docs/*
           git add package.json
           git commit -m "docs: updates github page (${{ steps.build.outputs.version }})"
+          git pull $REMOTE
           git push $REMOTE
