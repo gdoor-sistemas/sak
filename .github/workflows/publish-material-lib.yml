@@ -3,7 +3,7 @@ name: Publish @gdoor/material
 on:
   push:
     branches: [ main ]
-    paths: 'projects/material/**/*'
+    paths: [ 'projects/material/**/*', '.github/workflows/publish-material-lib.yml' ]
 
 jobs:
   build:
@@ -24,17 +24,19 @@ jobs:
         id: build
         run: |
           yarn install
+          cd projects/material
           echo "##[set-output name=version;]$(npm version patch --no-git-tag-version)"
+          cd ../..
           yarn ng build material --prod
 
-     - name: Pushes new version
-       run: |
-         git config user.email "${{ github.actor }}@users.noreply.github.com"
-         git config user.name "${{ github.actor }}"
-         REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-         git add projects/helpers/package.json
-         git commit -m "${{ github.repository }}@${{ steps.build.outputs.version }}"
-         git push $REMOTE
+      - name: Pushes new version
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add projects/material/package.json
+          git commit -m "${{ github.repository }}@${{ steps.build.outputs.version }}"
+          git push $REMOTE
 
       - name: Publish to npmjs
         run: |
