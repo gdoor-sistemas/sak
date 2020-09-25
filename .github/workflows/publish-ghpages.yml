@@ -1,4 +1,4 @@
-name: Publish sak's GitHub Pages
+name: Publish SAK's GitHub Pages
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
         run: |
           yarn install
           echo "##[set-output name=version;]$(npm version patch --no-git-tag-version)"
-          yarn ng build --prod --output-path=docs
+          yarn ng build --prod --output-path=docs --base-href=/sak
           cp docs/index.html docs/404.html
           
       - name: Publish docs to repo
