@@ -171,4 +171,36 @@ export class Util {
   public static random(max: number): number {
     return Math.min(Math.floor(Math.random() * (max + 1)), max);
   }
+
+  /**
+   * Compara duas strings de versionamento.
+   * Retornos:
+   * a > b = 1
+   * a < b = -1
+   * a == b = 0
+   */
+  public static compareVersions(versionA: string, versionB: string): number {
+    // tslint:disable:no-bitwise
+    // treat non-numerical characters as lower version
+    // replacing them with a negative number based on charcode of each character
+    const fix = s => '.' + (s.toLowerCase().charCodeAt(0) - 65536) + '.';
+
+    const va: any[] = ('' + versionA).replace(/[^0-9.]/g, fix).split('.');
+    const vb: any[] = ('' + versionB).replace(/[^0-9.]/g, fix).split('.');
+    for (let i = 0, c = Math.max(versionA.length, versionB.length); i < c; i++) {
+      // convert to integer the most efficient way
+      va[i] = ~~va[i];
+      vb[i] = ~~vb[i];
+
+      if (versionA[i] > versionB[i]) {
+        return 1;
+      }
+
+      if (versionA[i] < versionB[i]) {
+        return -1;
+      }
+    }
+
+    return 0;
+  }
 }

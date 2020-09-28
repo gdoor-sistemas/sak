@@ -1,79 +1,47 @@
-import { Util } from './util.helper';
+import { Url } from './url.helper';
 
-describe('Util helper', () => {
-  it('should check if value is null or undefined', () => {
-    const truthy = [null, undefined];
-    expect(truthy.every(v => Util.isNullOrUndefined(v))).toBe(true, 'isNullOrUndefined');
+fdescribe('Url helper', () => {
+  const apiUrl = '//localhost';
 
-    const falsy = ['', false, 0, [], {}];
-    expect(falsy.every(v => Util.isNotNullOrUndefined(v))).toBe(true, 'isNotNullOrUndefined');
+  it('should set static api url', () => {
+    Url.setApiUrl(apiUrl);
+    expect(Url.getResourceUrl('')).toEqual(apiUrl);
   });
 
-  it('should check if all items are null or undefined', () => {
-    const values = [null, undefined, null];
-    expect(Util.areNullOrUndefined(...values)).toBeTrue();
+  it('should add apiUrl only if needed', () => {
+    expect(Url.getResourceUrl(apiUrl)).toEqual(apiUrl, 'apiUrl');
   });
 
-  it('should check if any items are null or undefined', () => {
-    let values: any[] = ['null', undefined, 0];
-    expect(Util.isAnyNullOrUndefined(...values)).toBeTrue();
-
-    values = ['', false, 0];
-    expect(Util.isAnyNullOrUndefined(...values)).toBeFalse();
+  it('should parse route params', () => {
+    expect(Url.getResourceUrl('path/:id', {id: 'test'})).toMatch(/\/path\/test$/);
   });
 
-  it('should check if value is empty', () => {
-    expect(Util.isEmpty({})).toBe(true, '{}');
-    expect(Util.isEmpty([])).toBe(true, '[]');
-    expect(Util.isEmpty(null)).toBe(true, 'null');
-    expect(Util.isEmpty(undefined)).toBe(true, 'undefined');
-    expect(Util.isEmpty('')).toBe(true, '\'\'');
+  it('should add query params', () => {
+    expect(Url.getResourceUrl('path', {foo: 'bar'})).toMatch(/\/path\?foo=bar$/);
   });
 
-  it('should check if value is a string', () => {
-    expect(Util.isString('')).toBeTrue();
-    expect(Util.isString(1)).toBeFalse();
+  it('should add parts to end of path', () => {
+    expect(Url.getResourceUrl('path', {f: 'b'}, '1/2', '3')).toMatch(/\/path\/1\/2\/3\?/);
   });
 
-  it('should check if value is an object', () => {
-    expect(Util.isObject({})).toBe(true, '{}');
-    expect(Util.isObject([])).toBe(false, '[]');
-    expect(Util.isObject(null)).toBe(false, 'null');
-    expect(Util.isObject(undefined)).toBe(false, 'undefined');
+  it('should not add empty params', () => {
+    const url = Url.getResourceUrl('path', {n: null, u: undefined, s: ' \n', o: {}, b: true});
+    expect(url).toMatch(/\/path\?b=true$/);
   });
 
-  it('should check if value is a function', () => {
-    expect(Util.isFunction(() => {})).toBe(true, '() => {}');
-    expect(Util.isFunction({})).toBe(false, '{}');
+  it('should remove duplicated slashes', () => {
+    expect(Url.getResourceUrl('/path//param/', {f: 'b'}, '/part/s', '/s')).not.toMatch(/.\/{2,}/);
   });
 
-  it('should wrap value into an array', () => {
-    expect(Util.asArray(null)).toEqual([], 'null');
-    expect(Util.asArray('')).toEqual([], '\'\'');
-    expect(Util.asArray(['val'])).toEqual(['val'], '[\'val\']');
-    expect(Util.asArray('val')).toEqual(['val'], '\'val\'');
+  it('should add array param elements separated by comma', () => {
+    expect(Url.getResourceUrl('p/:val', {val: [1, 2], foo: ['bar', 'baz']})).toMatch(/\/p\/1,2\?foo=bar,baz$/);
   });
 
-  it('should flat an object', () => {
-    const o = {
-      foo: 'bar',
-      baz: {
-        key: 'value',
-        null: null,
-      },
-      arrays: {
-        first: [1, 3],
-      },
-      empty: {},
-    };
+  it('should add flatten object params', () => {
+    expect(Url.getResourceUrl('p', {f: 1, b: {k: 'v'}})).toMatch(/\/p\?f=1&b.k=v$/);
+  });
 
-    const expected = {
-      foo: 'bar',
-      'baz.key': 'value',
-      'baz.null': null,
-      'arrays.first': [1, 3],
-    };
-
-    expect(Util.flatObject(o)).toEqual(expected);
+  it('should remove empty route params', () => {
+    expect(Url.getResourceUrl('p/:id')).toMatch(/\/p$/);
   });
 });
