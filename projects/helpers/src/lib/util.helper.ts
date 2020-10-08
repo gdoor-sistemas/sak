@@ -182,7 +182,7 @@ export class Util {
   public static compareVersions(versionA: string, versionB: string): number {
     // tslint:disable:no-bitwise
     // treat non-numerical characters as lower version
-    // replacing them with a negative number based on charcode of each character
+    // replacing them with a negative number based on char code of each character
     const fix = s => '.' + (s.toLowerCase().charCodeAt(0) - 65536) + '.';
 
     const va: any[] = ('' + versionA).replace(/[^0-9.]/g, fix).split('.');
