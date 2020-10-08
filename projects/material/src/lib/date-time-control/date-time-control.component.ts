@@ -12,7 +12,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MAT_FORM_FIELD, MatFormField, MatFormFieldControl } from '@angular/material/form-field';
-import { AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NgControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -67,7 +67,10 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
   @Input()
   public required: boolean;
 
-  public readonly parts: FormGroup;
+  public readonly parts: FormGroup = new FormGroup({
+    date: new FormControl(null, [Validators.required]),
+    time: new FormControl(null, [Validators.required]),
+  });
 
   public id = `gd-date-time-control-${DateTimeControlComponent.nextId++}`;
 
@@ -96,17 +99,11 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     return this.focused || !this.empty;
   }
 
-  constructor(formBuilder: FormBuilder,
-              private _focusMonitor: FocusMonitor,
+  constructor(private _focusMonitor: FocusMonitor,
               private _elementRef: ElementRef<HTMLElement>,
               @Optional() @Inject(MAT_FORM_FIELD) public formField: MatFormField,
               @Optional() @Self() public ngControl: NgControl,
               @Inject(LOCALE_ID) public readonly locale: string) {
-    this.parts = formBuilder.group({
-      date: [null, [Validators.required]],
-      time: [null, [Validators.required]],
-    });
-
     this._focusMonitor.monitor(this._elementRef, true).subscribe(origin => {
       if (this.focused && !origin) {
         this.onTouched();
@@ -147,6 +144,7 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     this.stateChanges.complete();
     this._focusMonitor.stopMonitoring(this._elementRef);
   }
+
   //endregion
 
   //region Behaviour controls
@@ -178,6 +176,7 @@ export class DateTimeControlComponent implements ControlValueAccessor, MatFormFi
     this.autoFocusNext(control, next);
     this.onChange(this.value);
   }
+
   //endregion
 
   // region ControlValueAccessor implementations
