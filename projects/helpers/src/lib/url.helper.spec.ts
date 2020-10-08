@@ -1,6 +1,6 @@
 import { Url } from './url.helper';
 
-fdescribe('Url helper', () => {
+describe('Url helper', () => {
   const apiUrl = '//localhost';
 
   it('should set static api url', () => {

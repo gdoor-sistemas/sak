@@ -79,8 +79,8 @@ describe('Util helper', () => {
 
   it('should correctly compare 2 versions', () => {
     expect(Util.compareVersions('1.0.0', '1.0')).toEqual(0);
-    expect(Util.compareVersions('1.0.0', '1.1')).toEqual(1);
-    expect(Util.compareVersions('1.0.0', '1.0-alpha')).toEqual(-1);
+    expect(Util.compareVersions('1.0.0', '1.1')).toEqual(-1);
+    expect(Util.compareVersions('1.0.0', '1.0-alpha')).toEqual(1);
     expect(Util.compareVersions('1.0', '2.0')).toEqual(-1);
     expect(Util.compareVersions('3.0', '2.0')).toEqual(1);
   });
