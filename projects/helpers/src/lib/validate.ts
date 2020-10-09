@@ -1,15 +1,13 @@
-import { Str } from './str.helper';
-
 export class Validate {
   /**
    *
    */
   public static cpf(value: string): boolean {
-    if (value.replace(/[^0-9\.-]/g, '') !== value) {
+    if (value.replace(/[^\d\.-]/g, '') !== value) {
       return false;
     }
 
-    value = Str.onlyNumbers(value);
+    value = value.replace(/[^\d]/g, '');
 
     if (value.length !== 11 || !Array.from(value).filter(e => e !== value[0]).length) {
       return false;
