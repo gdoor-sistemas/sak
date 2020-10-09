@@ -3,11 +3,11 @@
  */
 export class Str {
   public static onlyNumbers(value: string): string {
-    return value.replace(/[^0-9]/g, '');
+    return value.replace(/[^\d]/g, '');
   }
 
   public static hasOnlyNumbers(value: string): boolean {
-    return value.length && (value.replace(/[0-9]/g, '') === '');
+    return value.length && (value.replace(/\d/g, '') === '');
   }
 
   public static reverse(value: string): string {
