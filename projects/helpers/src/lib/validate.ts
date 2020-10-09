@@ -1,3 +1,6 @@
+/**
+ * @dynamic
+ */
 export class Validate {
   /**
    *
