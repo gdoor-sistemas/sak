@@ -12,9 +12,7 @@ export const defaultConfig: Partial<ConfirmDialogConfig> = {
   focusIndex: 1,
 };
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ConfirmDialogService {
   constructor(public dialog: MatDialog,
               @Optional() @Inject(CONFIRM_DIALOG_DEFAULT_CONFIG) private _defaults: ConfirmDialogConfig) {}
