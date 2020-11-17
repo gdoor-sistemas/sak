@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{config.question}}</h2>
+<mat-dialog-content [innerHTML]="config.description"></mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false" id="gd-confirm-dialog-cancel">
+    {{config.cancelText}}
+  </button>
+  <button mat-button [mat-dialog-close]="true" [color]="config.confirmTheme" id="gd-confirm-dialog-confirm">
+    {{config.confirmText}}
+  </button>
+</mat-dialog-actions>

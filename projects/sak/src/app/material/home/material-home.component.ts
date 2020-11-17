@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ConfirmDialogService } from '@gdoor/material';
 
 @Component({
   selector: 'sak-material-home',
   templateUrl: './material-home.component.html',
   styleUrls: ['./material-home.component.scss'],
 })
-export class MaterialHomeComponent implements OnInit {
-  public datetime = new Date();
+export class MaterialHomeComponent {
+  public confirmResult: boolean;
 
-  constructor() { }
+  constructor(private cfgDlg: ConfirmDialogService) { }
 
-  ngOnInit(): void {
-  }
-
-  public log($event: any): void {
-    console.log($event);
+  public confirm(): void {
+    this.cfgDlg.ask('Do?', 'Really do? This cannot be undone.').subscribe(res => this.confirmResult = res);
   }
 }
