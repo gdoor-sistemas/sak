@@ -26,13 +26,17 @@ export class ConfirmDialogService {
    */
   public ask(...args): Observable<boolean> {
     const data: ConfirmDialogConfig = this._normalizeAskConfig(args);
-    return this.dialog.open(ConfirmDialogModalComponent, {
-      data,
-      autoFocus: false,
-      width: '680px',
-      disableClose: true,
-      role: 'dialog',
-    }).afterClosed();
+
+    // creates a new observable to avoid calling the modal before the method is subscribed
+    return new Observable(observer => {
+      return this.dialog.open(ConfirmDialogModalComponent, {
+        data,
+        autoFocus: false,
+        width: '680px',
+        disableClose: true,
+        role: 'dialog',
+      }).afterClosed().subscribe(observer);
+    });
   }
 
   /**
