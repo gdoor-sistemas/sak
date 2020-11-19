@@ -6,7 +6,9 @@ import { ConfirmDialogConfig } from './confirm-dialog-config.interface';
 import { ConfirmDialogModalComponent } from './modal/confirm-dialog-modal.component';
 import { CONFIRM_DIALOG_DEFAULT_CONFIG } from './confirm-dialog-default-config.constant';
 
-export const defaultConfig: Partial<ConfirmDialogConfig> = {
+type PartialConfirmDialogConfig = Partial<ConfirmDialogConfig>;
+
+export const defaultConfig: PartialConfirmDialogConfig = {
   confirmText: 'Sim',
   cancelText: 'Não',
   focusIndex: 1,
@@ -17,9 +19,9 @@ export class ConfirmDialogService {
   constructor(public dialog: MatDialog,
               @Optional() @Inject(CONFIRM_DIALOG_DEFAULT_CONFIG) private _defaults: ConfirmDialogConfig) {}
 
-  public ask(question: string, config?: ConfirmDialogConfig): Observable<boolean>;
-  public ask(question: string, description: string, config?: ConfirmDialogConfig): Observable<boolean>;
-  public ask(question: string, description: string, confirmText: string, config?: ConfirmDialogConfig): Observable<boolean>;
+  public ask(question: string, config?: PartialConfirmDialogConfig): Observable<boolean>;
+  public ask(question: string, description: string, config?: PartialConfirmDialogConfig): Observable<boolean>;
+  public ask(question: string, description: string, confirmText: string, config?: PartialConfirmDialogConfig): Observable<boolean>;
 
   /**
    * Presents a dialog with 2 closing options
