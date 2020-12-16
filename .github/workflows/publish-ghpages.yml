@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.2
 
-      - uses: actions/setup-node@v1.4.3
+      - uses: actions/setup-node@v2.1.2
         with:
           node-version: 12
 
@@ -23,7 +23,7 @@ jobs:
           echo "##[set-output name=version;]$(npm version patch --no-git-tag-version)"
           yarn ng build --prod --output-path=docs --base-href=https://gdoor-sistemas.github.io/sak/
           cp docs/index.html docs/404.html
-          
+
       - name: Publish docs to repo
         run: |
           git config user.email "${{ github.actor }}@users.noreply.github.com"

@@ -1,4 +1,11 @@
-<mat-form-field>
-  <gd-date-time-control placeholder="teste" [(ngModel)]="datetime" (ngModelChange)="log($event)"></gd-date-time-control>
-</mat-form-field>
+<h2 class="mat-h2"><kbd>ConfirmDialog</kbd></h2>
+
+<p>Shows a confirmation dialog with 2 closing options</p>
+
+<div class="example">
+  <button type="button" mat-button (click)="confirm()">Confirm</button>
+
+  <p class="example-result">Last confirm result: <kbd>{{confirmResult}}</kbd></p>
+</div>
+
 
