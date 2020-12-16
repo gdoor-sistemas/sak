@@ -84,4 +84,14 @@ describe('Util helper', () => {
     expect(Util.compareVersions('1.0', '2.0')).toEqual(-1);
     expect(Util.compareVersions('3.0', '2.0')).toEqual(1);
   });
+
+  fit('should check if objects are equal', () => {
+    expect(Util.areDeepEqual({foo: 'bar', baz: 'foo'}, {baz: 'foo', foo: 'bar'})).toBe(true, '2 equal raw shallow objects');
+    expect(Util.areDeepEqual({foo: 'bar'}, {baz: 'foo', foo: 'bar'})).toBe(false, '2 different shallow objects');
+
+    expect(Util.areDeepEqual(
+      {foo: 'bar', baz: {baz: 'foo', array: [1, 2, 3]}},
+      {baz: {baz: 'foo', array: [1, 2, 3]}, foo: 'bar'},
+    )).toBe(true, '2 equal raw complex objects');
+  });
 });
