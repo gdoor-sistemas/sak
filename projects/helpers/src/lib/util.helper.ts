@@ -203,4 +203,46 @@ export class Util {
 
     return 0;
   }
+
+  /**
+   * Verifica se 2 objetos são iguais
+   */
+  private static _areObjectsEqual(o1, o2): boolean {
+    const keys1 = Object.keys(o1);
+    const keys2 = Object.keys(o2);
+
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+
+    for (const key of keys1) {
+      const val1 = o1[key];
+      const val2 = o2[key];
+      const areObjectsOrArrays = (this.isObject(val1) && this.isObject(val2)) ||
+        (Array.isArray(val1) && Array.isArray(val2));
+      if (
+        (areObjectsOrArrays && !this._areObjectsEqual(val1, val2)) ||
+        (!areObjectsOrArrays && val1 !== val2)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Verifica se todos os objetos informados são iguais
+   */
+  public static areDeepEqual(object1: any, object2: any, ...objectN: any): boolean {
+    const elements = [object1, object2, ...objectN];
+
+    for (let i = 0; i < elements.length - 1; i++) {
+      if (!this._areObjectsEqual(elements[i], elements[i + 1])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
