@@ -17,8 +17,12 @@ export class Url {
 
   /**
    * Monta a URL com os parâmetros
+   *
+   * @param path Caminho para aplicar os parâmetros. Ex.: 'path/:id'
+   * @param obj Objeto com os parâmetros nomeados. Ex.: `{id: 1, search: 'foo'}`
+   * @param parts Outras partes que possam ser adicionadas ao final do caminho
    */
-  private static _getInterpolatedUrl(path: string, obj?: any, ...parts: string[]): string {
+  public static parseParams(path: string, obj?: any, ...parts: string[]): string {
     // adiciona partes extras ao final do path
     path = '/' + path.concat('/', parts.join('/')).split('/').filter(Boolean).join('/');
 
@@ -63,7 +67,7 @@ export class Url {
       path = path.replace(this.apiUrl, '');
     }
 
-    path = this._getInterpolatedUrl(path, identifiers, ...parts);
+    path = this.parseParams(path, identifiers, ...parts);
 
     return `${this.apiUrl}${path}`;
   }
