@@ -20,6 +20,10 @@
         "dist/helpers/gdoor-helpers",
         "dist/helpers"
       ],
+      "@gdoor/helpers/types": [
+        "dist/helpers/gdoor-helpers/types",
+        "dist/helpers/types"
+      ],
       "@gdoor/material": [
         "dist/material/gdoor-material",
         "dist/material"
