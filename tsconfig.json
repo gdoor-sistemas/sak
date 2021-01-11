@@ -20,6 +20,10 @@
         "dist/helpers/gdoor-helpers",
         "dist/helpers"
       ],
+      "@gdoor/helpers/services": [
+        "dist/helpers/gdoor-helpers/services",
+        "dist/helpers/services"
+      ],
       "@gdoor/helpers/pipes": [
         "dist/helpers/gdoor-helpers/pipes",
         "dist/helpers/pipes"
