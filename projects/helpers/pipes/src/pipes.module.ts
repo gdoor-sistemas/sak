@@ -13,6 +13,7 @@ import { CharPipe } from './char.pipe';
 import { BrlPipe } from './brl.pipe';
 import { YesNoPipe } from './yes-no.pipe';
 import { GD_YES_NO_INTL_PROVIDER } from './yes-no-intl.service';
+import { PercentValuePipe } from './percent-value.pipe';
 
 const pipes = [
   CpfCnpjPipe,
@@ -25,6 +26,7 @@ const pipes = [
   CharPipe,
   BrlPipe,
   YesNoPipe,
+  PercentValuePipe,
 ];
 
 @NgModule({

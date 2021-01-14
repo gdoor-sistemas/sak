@@ -8,6 +8,7 @@ export * from './src/char.pipe';
 export * from './src/cpf-cnpj.pipe';
 export * from './src/ncm.pipe';
 export * from './src/nl2br.pipe';
+export * from './src/percent-value.pipe';
 export * from './src/pipes.module';
 export * from './src/yes-no.pipe';
 export * from './src/yes-no-intl.service';
