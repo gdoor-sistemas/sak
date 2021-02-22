@@ -15,4 +15,4 @@ import { ConfirmDialogService } from './confirm-dialog.service';
   ],
   providers: [ConfirmDialogService],
 })
-export class ConfirmDialogModule {}
+export class GdConfirmDialogModule {}

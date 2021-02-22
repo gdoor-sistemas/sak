@@ -35,6 +35,10 @@
       "@gdoor/material": [
         "dist/material/gdoor-material",
         "dist/material"
+      ],
+      "@gdoor/material/confirm": [
+        "dist/material/gdoor-material/confirm",
+        "dist/material/confirm"
       ]
     }
   }

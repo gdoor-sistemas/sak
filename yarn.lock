@@ -1370,13 +1370,6 @@
   dependencies:
     tslib "^2.0.0"
 
-"@gdoor/material@*":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@gdoor/material/-/material-0.1.2.tgz#950950dc376558564d6e946a4f66506a50df5d52"
-  integrity sha512-JBdbhjxYKsXRqF8ZG/svtFLDq79xu0m1XxPwbfQtMRMyFsUfQqr4yNCzxwu6ubiMFsZeWYEyYKbud0djr2/ZcA==
-  dependencies:
-    tslib "^2.0.0"
-
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"

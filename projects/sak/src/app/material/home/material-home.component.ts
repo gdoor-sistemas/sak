@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfirmDialogService } from '@gdoor/material';
+import { ConfirmDialogService } from '@gdoor/material/confirm';
 
 @Component({
   selector: 'sak-material-home',

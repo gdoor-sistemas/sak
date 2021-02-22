@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { ConfirmDialogModule } from '@gdoor/material';
+import { MatButtonModule } from '@angular/material/button';
+import { GdConfirmDialogModule } from '@gdoor/material/confirm';
 
 import { MaterialRoutingModule } from './material-routing.module';
 import { MaterialHomeComponent } from './home/material-home.component';
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [MaterialHomeComponent],
@@ -15,8 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
     MaterialRoutingModule,
     MatFormFieldModule,
     FormsModule,
-    ConfirmDialogModule,
     MatButtonModule,
+    GdConfirmDialogModule,
   ],
 })
 export class MaterialModule {}
