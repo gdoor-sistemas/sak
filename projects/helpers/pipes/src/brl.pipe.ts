@@ -10,6 +10,6 @@ export class BrlPipe implements PipeTransform {
       return value;
     }
 
-    return formatCurrency(value, 'pt-br', 'R$', 'BRL', `1.${precision}-${precision}`);
+    return formatCurrency(value, 'pt-br', 'R$\u00A0', 'BRL', `1.${precision}-${precision}`);
   }
 }
