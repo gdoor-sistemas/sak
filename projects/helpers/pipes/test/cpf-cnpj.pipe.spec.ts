@@ -5,7 +5,7 @@ import { Format } from '@gdoor/helpers';
 
 @Component({template: `{{value | cpfCnpj}}`})
 class TestHostComponent {
-  public value: string;
+  public value: string | number;
 }
 
 describe('CpfCnpjPipe', () => {
@@ -29,8 +29,8 @@ describe('CpfCnpjPipe', () => {
   });
 
   it('should render piped value', () => {
-    component.value = '12345678901';
+    component.value = 12345678901;
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerText.trim()).toBe(Format.cpfCnpj(component.value));
+    expect(fixture.nativeElement.innerText.trim()).toBe(Format.cpfCnpj(String(component.value)));
   });
 });

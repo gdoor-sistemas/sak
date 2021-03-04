@@ -5,7 +5,7 @@ import { Format } from '@gdoor/helpers';
 
 @Component({template: `<span [innerHTML]="value | brPhone:link"></span>`})
 class TestHostComponent {
-  public value: string;
+  public value: string | number;
   public link = false;
 }
 
@@ -41,5 +41,11 @@ describe('PhonePipe', () => {
     component.link = true;
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('a.link')).toBeTruthy();
+  });
+
+  it('should format a number', () => {
+    component.value = 34413100;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.innerText.trim()).toMatch(/3441.*3100/);
   });
 });

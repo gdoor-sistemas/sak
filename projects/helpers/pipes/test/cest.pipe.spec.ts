@@ -5,7 +5,7 @@ import { Format } from '@gdoor/helpers';
 
 @Component({template: `{{value | cest}}`})
 class TestHostComponent {
-  public value: string;
+  public value: string | number;
 }
 
 describe('CestPipe', () => {
@@ -35,8 +35,8 @@ describe('CestPipe', () => {
   });
 
   it('should render piped value', () => {
-    component.value = '1234567';
+    component.value = 1234567;
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerText.trim()).toBe(Format.cest(component.value));
+    expect(fixture.nativeElement.innerText.trim()).toBe(Format.cest(String(component.value)));
   });
 });

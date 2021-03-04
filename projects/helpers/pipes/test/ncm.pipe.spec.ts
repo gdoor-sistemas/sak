@@ -5,7 +5,7 @@ import { Format } from '@gdoor/helpers';
 
 @Component({template: `{{value | ncm}}`})
 class TestHostComponent {
-  public value: string;
+  public value: string | number;
 }
 
 describe('NcmPipe', () => {
@@ -35,8 +35,8 @@ describe('NcmPipe', () => {
   });
 
   it('should render piped value', () => {
-    component.value = '12345678';
+    component.value = 12345678;
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerText.trim()).toBe(Format.ncm(component.value));
+    expect(fixture.nativeElement.innerText.trim()).toBe(Format.ncm(String(component.value)));
   });
 });

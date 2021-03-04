@@ -5,6 +5,6 @@ import { Format } from '@gdoor/helpers';
 @Pipe({name: 'cest'})
 export class CestPipe implements PipeTransform {
   public transform(value: string): string {
-    return value && Format.cest(value);
+    return value && Format.cest(String(value));
   }
 }
