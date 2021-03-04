@@ -12,7 +12,7 @@ class TestHostComponent {
   public param: any = 2;
 }
 
-fdescribe('PercentValuePipe', () => {
+describe('PercentValuePipe', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 

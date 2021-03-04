@@ -5,6 +5,6 @@ import { Format } from '@gdoor/helpers';
 @Pipe({name: 'cpfCnpj'})
 export class CpfCnpjPipe implements PipeTransform {
   public transform(value: string): string {
-    return value && Format.cpfCnpj(value);
+    return value && Format.cpfCnpj(String(value));
   }
 }

@@ -5,6 +5,6 @@ import { Format } from '@gdoor/helpers';
 @Pipe({name: 'ncm'})
 export class NcmPipe implements PipeTransform {
   public transform(value: string): string {
-    return value && Format.ncm(value);
+    return value && Format.ncm(String(value));
   }
 }
