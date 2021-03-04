@@ -43,13 +43,13 @@ describe('BrlPipe', () => {
   it('should render piped value', () => {
     component.value = 123.456;
     fixture.detectChanges();
-    expect(text()).toMatch(/R\$.?123,46/);
+    expect(text()).toMatch(/R\$\s123,46/);
   });
 
   it('should render piped value with precision=3', () => {
     component.value = 123.456;
     component.precision = 3;
     fixture.detectChanges();
-    expect(text()).toMatch(/R\$.?123,456/);
+    expect(text()).toMatch(/R\$\s123,456/);
   });
 });
