@@ -1,5 +1,7 @@
 export * from './blob.helper';
+export * from './download.helper';
 export * from './format.helper';
+export * from './fullscreen.helper';
 export * from './number.helper';
 export * from './str.helper';
 export * from './url.helper';
