@@ -1,4 +1,4 @@
-import {DownloadHelper} from '../lib';
+import { DownloadHelper } from '../lib';
 
 describe('Download helper', () => {
   it('should invoke a download', () => {

@@ -2,9 +2,8 @@
  * @dynamic
  */
 export class DownloadHelper {
-
   /**
-   * Create a dummy element and trigger the file download.
+   * Creates a dummy element and triggers the file download.
    */
   public static triggerDownload(res: any, fileName: string, extension: string = 'zip', mimeType: string = 'application/zip'): void {
     const blob = new Blob([res], {type: mimeType});

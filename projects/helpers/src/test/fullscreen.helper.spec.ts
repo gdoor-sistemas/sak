@@ -1,4 +1,4 @@
-import {FullscreenHelper} from '../lib';
+import { FullscreenHelper } from '../lib';
 
 describe('Fullscreen helper', () => {
   /**
