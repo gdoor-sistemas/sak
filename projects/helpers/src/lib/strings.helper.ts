@@ -7,7 +7,7 @@ export class StringsHelper {
   }
 
   public static hasOnlyNumbers(value: string): boolean {
-    return value.length && (value.replace(/\d/g, '') === '');
+    return value.length && Boolean(value.match(/^\d+$/));
   }
 
   public static reverse(value: string): string {

@@ -93,7 +93,8 @@ export class Format {
     const expNoArea = /(\d{4,5})(\d{4})/;
     const maskTelNoArea = '$1-$2';
 
-    if (['0300', '0800'].includes(clearValue.substr(0, 4))) {
+    // 0300/0800
+    if (clearValue.match(/^0[1-9]00/)) {
       return clearValue.replace(exp0800, mask0800);
     }
 
