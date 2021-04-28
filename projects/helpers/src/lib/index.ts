@@ -1,3 +1,4 @@
+export { ArrayHelper as Arr } from './array.helper';
 export * from './blob.helper';
 export * from './download.helper';
 export * from './format.helper';
