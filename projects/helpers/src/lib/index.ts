@@ -4,7 +4,7 @@ export * from './download.helper';
 export * from './format.helper';
 export * from './fullscreen.helper';
 export * from './number.helper';
-export * from './str.helper';
+export { StringsHelper as Str } from './strings.helper';
 export * from './url.helper';
 export * from './util.helper';
 export * from './validate';

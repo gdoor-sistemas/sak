@@ -1,4 +1,4 @@
-import { Str } from './str.helper';
+import { StringsHelper as Str } from './strings.helper';
 
 /**
  * Class to help formatting strings
