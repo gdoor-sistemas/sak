@@ -21,4 +21,16 @@ describe('Str helper', () => {
   it('should insert a string into another and replace', () => {
     expect(Str.insert('adc', 'b', 1, true)).toEqual('abc');
   });
+
+  it('should transform into camelCase', () => {
+    expect(Str.camelCased('string * test  case_foo-bar')).toBe('stringTestCaseFooBar');
+  });
+
+  it('should transform into slug-case', () => {
+    expect(Str.slugCased('+string Test  case ')).toBe('string-test-case');
+  });
+
+  it('should transform into Title Case', () => {
+    expect(Str.titleCased('string test  case')).toBe('String Test  Case');
+  });
 });

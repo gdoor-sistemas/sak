@@ -35,4 +35,27 @@ export class StringsHelper {
     const pos = position + (replace ? subject.length : 0);
     return dest.substr(0, position) + subject + dest.substr(pos);
   }
+
+  /**
+   * Returns the string camelCased.
+   */
+  public static camelCased(value: string): string {
+    return value.toLowerCase().replace(/[_\W]+\w/g, str => {
+      return str.replace(/[_\W]+/, '').toUpperCase().trim();
+    });
+  }
+
+  /**
+   * Returns the string slug-cased or kebab-cased.
+   */
+  public static slugCased(value: string): string {
+    return value.toLowerCase().replace(/[_\W]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  /**
+   * Returns the string Title Cased.
+   */
+  public static titleCased(value: string): string {
+    return value.replace(/\b(\w)/g, firstLetter => firstLetter.toUpperCase());
+  }
 }
