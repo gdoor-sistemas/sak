@@ -245,4 +245,11 @@ export class Util {
 
     return true;
   }
+
+  /**
+   * Creates a brand new instance of the argument, including its children.
+   */
+  public static deepClone<T extends object = any>(value: T): T {
+    return JSON.parse(JSON.stringify(value));
+  }
 }

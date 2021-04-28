@@ -94,4 +94,24 @@ describe('Util helper', () => {
       {baz: {baz: 'foo', array: [1, 2, 3]}, foo: 'bar'},
     )).toBe(true, '2 equal raw complex objects');
   });
+
+  it('should create a entirely new object', () => {
+    const obj = {foo: 'bar'};
+    const obj2 = Util.deepClone(obj);
+    obj2.foo = 'baz';
+
+    expect(obj.foo).toBe('bar');
+  });
+
+  it('should create a entirely new array', () => {
+    const arr: any[] = [1, 2, 3, [4, 5, 6], {a: [1, 2, 3]}];
+    const arr2: any[] = Util.deepClone(arr);
+    arr2.unshift(0);
+    arr2.splice(4, 1);
+    arr2[4].a.push(2);
+
+    expect(Array.isArray(arr2)).toBeTrue();
+    expect(arr.length).toBe(5);
+    expect(arr[4].a.length).toBe(3);
+  });
 });
