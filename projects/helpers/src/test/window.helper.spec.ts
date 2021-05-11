@@ -1,6 +1,7 @@
 import { BlobHelper, WindowHelper } from '../lib';
+import { SafeHtml } from '@angular/platform-browser';
 
-describe('Window helper', () => {
+fdescribe('Window helper', () => {
   let blob: Blob;
 
   beforeEach(() => {
@@ -68,5 +69,23 @@ describe('Window helper', () => {
     WindowHelper.printInNewWindow(blob, 'foo');
 
     expect(printSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should print a SafeHtml object', () => {
+    const content: SafeHtml = 'safe content';
+    const windowMock = jasmine.createSpyObj('Window', ['print']);
+    windowMock.print.and.callFake(() => windowMock.onafterprint());
+    const iFrameMock = {
+      srcdoc: null,
+      contentWindow: windowMock,
+      remove: jasmine.createSpy('remove'),
+    };
+    spyOn(document, 'createElement').and.returnValue(iFrameMock as any);
+
+    WindowHelper.printDocument(content);
+
+    expect(iFrameMock.srcdoc).toBe(content);
+    expect(iFrameMock.contentWindow.print).toHaveBeenCalledTimes(1);
+    expect(iFrameMock.remove).toHaveBeenCalledTimes(1);
   });
 });
