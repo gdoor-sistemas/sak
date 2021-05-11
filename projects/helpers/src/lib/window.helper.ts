@@ -1,5 +1,3 @@
-import { SafeHtml } from '@angular/platform-browser';
-
 /**
  * @dynamic
  */
@@ -56,10 +54,10 @@ export class WindowHelper {
   /**
    * Creates an iframe element and calls print API to its content.
    */
-  public static printDocument(content: SafeHtml): void {
+  public static printDocument(content: string): void {
     const el = document.createElement('iframe');
     el.id = 'window-helper-print-document';
-    el.srcdoc = content as string;
+    el.srcdoc = content;
     document.body.append(el);
     el.contentWindow.onafterprint = () => el.remove();
     el.contentWindow.print();
