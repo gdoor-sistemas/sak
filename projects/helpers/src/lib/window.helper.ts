@@ -1,4 +1,4 @@
-import {DeviceHelper} from './device.helper';
+import { DeviceHelper } from './device.helper';
 
 /**
  * @dynamic
