@@ -1,3 +1,5 @@
+import { DeviceHelper } from './device.helper';
+
 /**
  * @dynamic
  */
@@ -6,7 +8,9 @@ export class WindowHelper {
    * Opens a blob in new window, if the browser allows
    */
   public static openInNewWindow(content: Blob, title: string, target: string = '_blank'): Window | undefined {
-    if (this._msSavesBlob(content, title)) { return; }
+    if (this._msSavesBlob(content, title)) {
+      return;
+    }
 
     const url = window.URL.createObjectURL(content);
     const tab = window.open(url, target);
@@ -55,6 +59,12 @@ export class WindowHelper {
    * Creates an iframe element and calls print API to its content.
    */
   public static printDocument(content: string): void {
+    if (DeviceHelper.isMobile(window.navigator.userAgent)) {
+      const newWindow = window.open();
+      newWindow.document.documentElement.innerHTML = content;
+      return newWindow.print();
+    }
+
     const el = document.createElement('iframe');
     el.id = 'window-helper-print-document';
     el.srcdoc = content;
