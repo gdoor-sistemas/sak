@@ -1,5 +1,4 @@
-import { BlobHelper, WindowHelper } from '../lib';
-import { SafeHtml } from '@angular/platform-browser';
+import {BlobHelper, WindowHelper} from '../lib';
 
 fdescribe('Window helper', () => {
   let blob: Blob;
@@ -71,8 +70,8 @@ fdescribe('Window helper', () => {
     expect(printSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should print a SafeHtml object', () => {
-    const content: SafeHtml = 'safe content';
+  it('should print a content', () => {
+    const content = 'some content';
     const windowMock = jasmine.createSpyObj('Window', ['print']);
     windowMock.print.and.callFake(() => windowMock.onafterprint());
     const iFrameMock = {
