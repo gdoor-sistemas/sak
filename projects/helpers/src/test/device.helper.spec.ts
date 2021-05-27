@@ -47,7 +47,6 @@ describe('Device helper', () => {
     expect(mobileUAs.every(i => DeviceHelper.isDesktop(i))).toBe(false);
   });
 
-
   it('should identify as NOT a mobile device', () => {
     expect(desktopUAs.every(i => DeviceHelper.isMobile(i))).toBe(false);
   });
