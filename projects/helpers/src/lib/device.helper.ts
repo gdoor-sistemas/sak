@@ -2,7 +2,6 @@
  * @dynamic
  */
 export class DeviceHelper {
-
   /**
    * Test the user agent against common mobile devices returning true if it matches.
    */
