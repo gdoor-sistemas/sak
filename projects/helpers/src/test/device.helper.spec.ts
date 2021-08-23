@@ -1,4 +1,4 @@
-import {DeviceHelper} from '../lib/device.helper';
+import { DeviceHelper } from '../lib/device.helper';
 
 describe('Device helper', () => {
   const mobileUAs = [

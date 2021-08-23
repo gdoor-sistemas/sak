@@ -63,18 +63,37 @@ describe('Util helper', () => {
       },
       arrays: {
         first: [1, 3],
+        object: [
+          {index: 5},
+          {index: 2},
+        ]
       },
       empty: {},
     };
 
-    const expected = {
+    const expectedWithArrays = {
+      foo: 'bar',
+      'baz.key': 'value',
+      'baz.null': null,
+      'arrays.first.0': 1,
+      'arrays.first.1': 3,
+      'arrays.object.0.index': 5,
+      'arrays.object.1.index': 2,
+    };
+
+    const expectedWithoutArrays = {
       foo: 'bar',
       'baz.key': 'value',
       'baz.null': null,
       'arrays.first': [1, 3],
+      'arrays.object': [
+        {index: 5},
+        {index: 2},
+      ],
     };
 
-    expect(Util.flatObject(o)).toEqual(expected);
+    expect(Util.flatObject(o, true)).toEqual(expectedWithArrays);
+    expect(Util.flatObject(o)).toEqual(expectedWithoutArrays);
   });
 
   it('should correctly compare 2 versions', () => {

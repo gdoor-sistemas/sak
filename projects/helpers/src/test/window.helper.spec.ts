@@ -1,6 +1,6 @@
-import {BlobHelper, WindowHelper} from '../lib';
+import { BlobHelper, WindowHelper } from '../lib';
 
-fdescribe('Window helper', () => {
+describe('Window helper', () => {
   let blob: Blob;
 
   beforeEach(() => {
