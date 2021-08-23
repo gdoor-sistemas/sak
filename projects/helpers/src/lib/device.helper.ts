@@ -10,13 +10,14 @@ export class DeviceHelper {
       IPHONE: /\biPhone\b/,
       IPOD: /\biPod\b/,
       ANDROID: /\bAndroid\b/,
-      WINDOWS_PHONE: /\bWindows-Phone\b/,
+      WINDOWS_PHONE: /\bWindows.?Phone\b/,
+      OPERA_MINI: /\bOpera\sMini\b/,
+      MOBILE_SAFARI: /\bMobile\sSafari\b/,
     };
 
-    const match = Object.keys(MOBILES).find(mobile => {
+    return !!Object.keys(MOBILES).find(mobile => {
       return userAgent.match(MOBILES[mobile]);
     });
-    return !!match;
   }
 
   /**
