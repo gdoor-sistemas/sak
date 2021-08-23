@@ -121,6 +121,20 @@ export class Util {
   }
 
   /**
+   * Flats an array as an one-level object.
+   */
+  private static _flatArrayInto(result: any, key: string, value: any[]): void {
+    value.forEach((item, index) => {
+      if (!this.isObject(item) && !Array.isArray(item)) {
+        return result[`${key}.${index}`] = item;
+      }
+
+      const flat = this.flatObject(item, true);
+      Object.keys(flat).forEach(newKey => result[`${key}.${index}.${newKey}`] = item[newKey]);
+    });
+  }
+
+  /**
    * Retorna um objeto de um nível apenas. Exemplo:
    * ```
    * {
@@ -141,21 +155,25 @@ export class Util {
    * }
    * ```
    */
-  public static flatObject(obj: any): { [key: string]: any } {
+  public static flatObject(obj: any, includeArrays = false): { [key: string]: any } {
     const result: any = {};
 
     Object.entries<any>(obj)
       .map(e => ({key: e[0], value: e[1]}))
       .forEach(({key, value}) => {
-        if (!Util.isObject(value)) {
+        if (Array.isArray(value) && includeArrays) {
+          return this._flatArrayInto(result, key, value);
+        }
+
+        if (!this.isObject(value)) {
           return result[key] = value;
         }
 
-        if (Util.isEmpty(value)) {
+        if (this.isEmpty(value)) {
           return;
         }
 
-        value = Util.flatObject(value);
+        value = this.flatObject(value, includeArrays);
         Object.keys(value).forEach(l => {
           result[`${key}.${l}`] = value[l];
         });
