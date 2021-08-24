@@ -66,7 +66,8 @@ describe('Util helper', () => {
         object: [
           {index: 5},
           {index: 2},
-        ]
+          {second: [1, 2, {foo: false}]},
+        ],
       },
       empty: {},
     };
@@ -79,6 +80,9 @@ describe('Util helper', () => {
       'arrays.first.1': 3,
       'arrays.object.0.index': 5,
       'arrays.object.1.index': 2,
+      'arrays.object.2.second.0': 1,
+      'arrays.object.2.second.1': 2,
+      'arrays.object.2.second.2.foo': false,
     };
 
     const expectedWithoutArrays = {
@@ -89,11 +93,12 @@ describe('Util helper', () => {
       'arrays.object': [
         {index: 5},
         {index: 2},
+        {second: [1, 2, {foo: false}]},
       ],
     };
 
-    expect(Util.flatObject(o, true)).toEqual(expectedWithArrays);
-    expect(Util.flatObject(o)).toEqual(expectedWithoutArrays);
+    expect(Util.flatObject(o, true)).toEqual(expectedWithArrays, 'parsing arrays');
+    expect(Util.flatObject(o)).toEqual(expectedWithoutArrays, 'not parsing arrays');
   });
 
   it('should correctly compare 2 versions', () => {
