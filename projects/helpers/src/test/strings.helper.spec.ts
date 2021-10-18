@@ -33,4 +33,8 @@ describe('Str helper', () => {
   it('should transform into Title Case', () => {
     expect(Str.titleCased('string test  case')).toBe('String Test  Case');
   });
+
+  it('should remove diacritics marks', () => {
+    expect(Str.removeDiacritics('ỆǍṔÉ áéíóúýčďěňřšťžůçàèìòùäëïöü')).toBe('EAPE aeiouycdenrstzucaeiouaeiou');
+  });
 });

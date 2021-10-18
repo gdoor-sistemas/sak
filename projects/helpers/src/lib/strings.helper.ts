@@ -58,4 +58,11 @@ export class StringsHelper {
   public static titleCased(value: string): string {
     return value.replace(/\b(\w)/g, firstLetter => firstLetter.toUpperCase());
   }
+
+  /**
+   * Replaces the accentuated characters with the equivalent without accent.
+   */
+  public static removeDiacritics(value: string): string {
+    return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
 }
