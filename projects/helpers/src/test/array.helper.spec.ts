@@ -25,4 +25,8 @@ describe('Array helper', () => {
     expect(ArrayHelper.distinct([1, 0, 2, 5, 1])).toEqual([1, 0, 2, 5]);
     expect(ArrayHelper.distinct([1, 0, 2, 5, '1'])).toEqual([1, 0, 2, 5, '1']);
   });
+
+  it('should chunk the array', () => {
+    expect(ArrayHelper.chunk([1, 0, 2, 5, 1], 2)).toEqual([[1, 0], [2, 5], [1]]);
+  });
 });
