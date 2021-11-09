@@ -37,4 +37,13 @@ describe('Str helper', () => {
   it('should remove diacritics marks', () => {
     expect(Str.removeDiacritics('ỆǍṔÉ áéíóúýčďěňřšťžůçàèìòùäëïöü')).toBe('EAPE aeiouycdenrstzucaeiouaeiou');
   });
+
+  it('should replace the non-ASCII Printable chars for their HTML Entiies equivalents', () => {
+    expect(Str.encodeHTMLEntities('GDOOR ® < > " \' & © ∆')).toBe('GDOOR &reg; &lt; &gt; &quot; &apos; &amp; &copy; &#8710;');
+  });
+
+  it('should replace the HTML Entities chars for their non-ASCII Printable equivalents', () => {
+    expect(Str.decodeHTMLEntities('GDOOR &reg; &lt; &gt; &quot; &apos; &amp; &copy; &#8710;')).toBe('GDOOR ® < > " \' & © ∆');
+  });
+
 });

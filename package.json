@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~11.2.1",
     "@angular/router": "~11.2.1",
     "@gdoor/helpers": "*",
+    "html-entities": "^2.3.2",
     "jsbarcode": "^3.11.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

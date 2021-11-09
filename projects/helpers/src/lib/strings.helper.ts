@@ -1,3 +1,5 @@
+import {decode, encode} from 'html-entities';
+
 /**
  * @dynamic
  */
@@ -64,5 +66,19 @@ export class StringsHelper {
    */
   public static removeDiacritics(value: string): string {
     return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  /**
+   * Replaces the special non-Ascii Printable chars for their HTML Entity equivalents.
+   */
+  public static encodeHTMLEntities(value: string): string {
+    return encode(value, {mode: 'nonAsciiPrintable', level: 'html5'});
+  }
+
+  /**
+   * Replaces the HTML Entities chars for their special non-Ascii Printable equivalents.
+   */
+  public static decodeHTMLEntities(value: string): string {
+    return decode(value, {level: 'html5'});
   }
 }
