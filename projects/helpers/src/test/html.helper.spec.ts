@@ -1,4 +1,4 @@
-import {HtmlHelper} from '../lib';
+import { HtmlHelper } from '../lib';
 
 describe('Html helper', () => {
   it('should replace the non-ASCII Printable chars for their HTML Entiies equivalents', () => {
