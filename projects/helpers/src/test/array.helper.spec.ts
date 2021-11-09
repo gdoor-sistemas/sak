@@ -29,4 +29,16 @@ describe('Array helper', () => {
   it('should chunk the array', () => {
     expect(ArrayHelper.chunk([1, 0, 2, 5, 1], 2)).toEqual([[1, 0], [2, 5], [1]]);
   });
+
+  it('should return a custom keyed object', () => {
+    expect(ArrayHelper.keyBy([{ id: 1 }, { id: 2 }], 'id')).toEqual({
+      1: { id: 1 },
+      2: { id: 2 },
+    });
+
+    expect(ArrayHelper.keyBy([{ id: 1, name: 1 }, { id: 2, name: 2 }, { id: 1, name: 3 }], 'id')).toEqual({
+      1: { id: 1, name: 3 },
+      2: { id: 2, name: 2 },
+    });
+  });
 });

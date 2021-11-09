@@ -35,4 +35,27 @@ export class ArrayHelper {
 
     return result;
   }
+
+  /**
+   * Returns an object keyed by the given key.
+   * Example:
+   * ```ts
+   * const array = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }];
+   * const key = 'id';
+   * const result = ArrayHelper.keyBy(array, key);
+   * // result = { 1: { id: 1, name: 'John' }, 2: { id: 2, name: 'Jane' } };
+   * ```
+   */
+  public static keyBy<T>(list: T[], key: string): { [index: string]: T } {
+    const result: { [index: string]: T } = {};
+
+    list.forEach(item => {
+      const keyType = typeof item[key];
+      if (['string', 'number'].includes(keyType)) {
+        result[item[key]] = item;
+      }
+    });
+
+    return result;
+  }
 }
