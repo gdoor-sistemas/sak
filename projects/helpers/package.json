@@ -1,7 +1,7 @@
 {
   "name": "@gdoor/helpers",
   "description": "A package with utilities for working with Angular",
-  "version": "1.7.1",
+  "version": "1.7.4",
   "peerDependencies": {
     "@angular/common": "~9",
     "@angular/platform-browser": "~9",
