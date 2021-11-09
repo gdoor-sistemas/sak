@@ -1,4 +1,4 @@
-import {decode, encode} from 'html-entities';
+import { decode, encode } from 'html-entities';
 
 /**
  * @dynamic
