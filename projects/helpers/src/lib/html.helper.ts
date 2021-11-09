@@ -1,7 +1,6 @@
 import { decode, encode } from 'html-entities';
 
 export class HtmlHelper {
-
   /**
    * Replaces the special non-Ascii Printable chars for their HTML Entity equivalents.
    */
