@@ -10,3 +10,4 @@ export * from './util.helper';
 export * from './validate';
 export * from './window.helper';
 export * from './device.helper';
+export * from './html.helper';
