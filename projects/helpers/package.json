@@ -3,9 +3,9 @@
   "description": "A package with utilities for working with Angular",
   "version": "1.8.2",
   "peerDependencies": {
-    "@angular/common": "~9",
-    "@angular/platform-browser": "~9",
-    "@angular/core": "~9"
+    "@angular/common": "^9",
+    "@angular/platform-browser": "^9",
+    "@angular/core": "^9"
   },
   "dependencies": {
     "tslib": "^2.0.0",
