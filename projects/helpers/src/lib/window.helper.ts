@@ -1,4 +1,4 @@
-import {DeviceHelper} from './device.helper';
+import { DeviceHelper } from './device.helper';
 
 /**
  * @dynamic
@@ -71,8 +71,6 @@ export class WindowHelper {
     document.body.append(el);
     el.contentWindow.onafterprint = () => el.remove();
     // este timeout é necessário para o firefox, pois caso contrário o frame é eliminado antes de renderizar
-    setTimeout(() => {
-      el.contentWindow.print();
-    }, 100);
+    setTimeout(() => el.contentWindow.print(), 100);
   }
 }
