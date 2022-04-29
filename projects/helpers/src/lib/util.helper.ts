@@ -107,6 +107,8 @@ export class Util {
 
   /**
    * Retorna o valor dentro de um array, ou um array vazio se o valor for equivalente a falso
+   *
+   * @deprecated Use `Arr.wrap()`.
    */
   public static asArray<T = any>(value: T | T[]): Array<T> {
     if (!value) {

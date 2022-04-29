@@ -10,4 +10,5 @@ export * from './util.helper';
 export * from './validate';
 export * from './window.helper';
 export * from './device.helper';
+export * from './do-with.function';
 export * from './html.helper';

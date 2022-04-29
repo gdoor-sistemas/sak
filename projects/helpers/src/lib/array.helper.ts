@@ -58,4 +58,19 @@ export class ArrayHelper {
 
     return result;
   }
+
+  /**
+   * Returns the value in an array, or an empty array if the value is equivalent to false.
+   */
+  public static wrap<T>(value: T | T[]): Array<T> {
+    if (!value) {
+      return [];
+    }
+
+    if (Array.isArray(value)) {
+      return value;
+    }
+
+    return [value];
+  }
 }
