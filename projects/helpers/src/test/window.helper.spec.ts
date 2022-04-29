@@ -5,6 +5,13 @@ describe('Window helper', () => {
 
   beforeEach(() => {
     blob = BlobHelper.base64ToBlob(btoa('content'), 'text/plain');
+
+    jasmine.clock().uninstall();
+    jasmine.clock().install();
+  });
+
+  afterEach(() => {
+    jasmine.clock().uninstall();
   });
 
   it('should download blob file and remove anchor if created', () => {
@@ -84,7 +91,10 @@ describe('Window helper', () => {
     WindowHelper.printDocument(content);
 
     expect(iFrameMock.srcdoc).toBe(content);
-    expect(iFrameMock.contentWindow.print).toHaveBeenCalledTimes(1);
-    expect(iFrameMock.remove).toHaveBeenCalledTimes(1);
+
+    jasmine.clock().tick(100);
+
+    expect(iFrameMock.remove).toHaveBeenCalledOnceWith();
+    expect(windowMock.print).toHaveBeenCalledOnceWith();
   });
 });
