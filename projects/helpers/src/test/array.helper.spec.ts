@@ -41,4 +41,11 @@ describe('Array helper', () => {
       2: { id: 2, name: 2 },
     });
   });
+
+  it('should wrap value into an array', () => {
+    expect(ArrayHelper.wrap(null)).toEqual([], 'null');
+    expect(ArrayHelper.wrap('')).toEqual([], '\'\'');
+    expect(ArrayHelper.wrap(['val'])).toEqual(['val'], '[\'val\']');
+    expect(ArrayHelper.wrap('val')).toEqual(['val'], '\'val\'');
+  });
 });
