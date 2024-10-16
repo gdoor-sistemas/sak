@@ -3,9 +3,9 @@
   "description": "A package with utilities for working with Angular",
   "version": "1.9.3",
   "peerDependencies": {
-    "@angular/common": ">=^9",
-    "@angular/platform-browser": ">=^9",
-    "@angular/core": ">=^9"
+    "@angular/common": "14.3.0",
+    "@angular/core": "14.3.0",
+    "@angular/platform-browser": ">=^9"
   },
   "dependencies": {
     "tslib": "^2.0.0",
